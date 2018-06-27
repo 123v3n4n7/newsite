@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% load static %}
+{% block articles %}
+
+	{% for article in articles %}		
+		<h1><a href = {% url 'article:article' article.id %}>{{article.title}}</a></h1>
+		<p>{{article.text}}</p>
+		<h5>date: {{article.date}}</h5>
+        <p>{{article.author}}</p>
+		<p><a href = {% url 'article:addlike' article.id %}><img src ="{% static 'like.jpg' %}" width="25px" height="25px"></a>{{article.likes}}</p>
+		<hr>
+	{% endfor %}
+
+{% endblock %}

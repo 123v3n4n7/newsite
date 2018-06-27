@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% load static %}
+{% block article%}
+	<h1>{{article.title}}</h1>
+	<p>{{article.text}}</p>
+    <p>{{username}}</p>
+	<h5>date: {{article.date}}</h5>
+	<hr>
+	<p>Комментарии:</p>
+	{% for comment in comments%}
+		<p>{{comment.comment_text}}</p>
+		<hr>
+	{% endfor %}
+    {% if auth == True %}
+	<form action = "/article/addcomment/{{article.id}}" method = "post">
+		{% csrf_token %}
+        {{form.author }}
+		{{form.comment_text}}
+		<input type = "submit" class = "button" value = "Добавить">		
+	</form>
+    {% endif %}
+	
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'regapp/css/foundation.css' %}" />
+{% block registration %}<h1> Регистрация </h1>
+<div class = "top-bar">
+	<section class = "top-bar-right">
+		<ul class = "menu">
+			{% if username %}
+				<li><a href = "/auth/profile">{{username}}</a></li>
+			{% else %}
+				<li><a href = "/auth/login">Войти</a></li>
+			{% endif %}
+		</ul>
+	</section>
+	{%block info%}{% endblock %}
+</div>
+{% endblock%}
+{% block articles %}{% endblock %}

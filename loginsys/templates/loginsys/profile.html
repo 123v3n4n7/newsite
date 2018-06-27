@@ -1,0 +1,25 @@
+
+
+
+{% block head %}<title>Profile</title>{% endblock %}
+{%block profile_info%}
+	<form  method = "post">
+		{% csrf_token %}
+		<p>Имя{{user_form.first_name}}</p>
+		<p>{{user.profile.bio}}</p>
+		<p>Любимая музыка: {{profile_form.music}}</p>
+		<p>Любимые места: {{user.profile.places}}</p>
+		<p>Дата рождения: {{user.profile.birth_date}}</p>
+		<p>Возраст: {{user.profile.age}}</p>
+		<p>Хобби: {{user.profile.hobby}}</p>
+		<img src = "{{ user.profile.picture.url }}" width = "200"></img>
+		<button type = "submit">save</button>
+	</form>
+{%endblock%}
+
+<form method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Save changes</button>
+</form>
