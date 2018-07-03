@@ -1,23 +1,36 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'regapp/css/foundation.css' %}" />
 {% block registration %}
-<h1> OurBLOG </h1>
-<div class = "top-bar">
-	<section class = "top-bar-right">
-		<ul class = "menu">
-			{% if username %}
-				<li><a href = "/auth/logout/">Выйти {{username}}</a></li>
-			{% else %}
-				<li><a href = "/auth/login/">Войти</a></li>
-			{% endif %}
-		</ul>
-	</section>
-</div>
-<div class = "row">
-</div>
-{% block registr%}{% endblock %}
-{% block articles %}{% endblock %}
-{% block article %}{% endblock %}
-{% endblock%}	
+    <h1> <a href="/">ourBLOG</a> </h1>
+<body>
+    <div class = "top-bar">
+        <div class = "top-bar-left">
+            <ul class = "menu">
+                {% if username %}
+                    <li><a href = "/auth/logout/">Выйти {{username}}</a></li>
+                {% else %}
+                    <li><a href = "/auth/login/">Войти</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class = "top-bar-rigth">
+            <form  action="{% url 'search:index' %}"class = "input-group" method="get">
+                    <span class="input-group-label">Найти</span>
+                    <input id = "search" name = "q" class = "input-group-field" type="text" placeholder="search">
+                    <div class="input-group-button">
+                        <input type="submit" class="button" value="Поиск">
+                    </div>
+            </form>
+        </div>
+    </div>
+    <div class = "row ">
+            {% block articles %}{% endblock %}
+            {% block registr%}{% endblock %}
+            {% block article %}{% endblock %}
+            {% block newarticle %}{% endblock %}
+            {% block addarticle %}{% endblock %}
+            {% block page %}{% endblock %}
+    </div>
+{% endblock%}
 {% block info%}{% endblock %}
-
+</body>

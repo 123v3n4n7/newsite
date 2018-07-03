@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block page %}
+    <h1>Поиск</h1>
+    {% if articles %}
+        {% for article in articles %}
+
+                <a href="{{ article.get_absolute_url }}">
+                    <h2>{{ article.title }}</h2>
+                </a>
+                <p><a class="button" href="{{ article.get_absolute_url }}">Читать далее</a></p>
+
+        {% endfor %}
+
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}

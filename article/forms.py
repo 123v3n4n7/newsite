@@ -6,10 +6,10 @@ from .models import Article, Comments
 class ArticleForm(forms.ModelForm):
     class Meta():
         model = Article
-        fields = ['title', 'text', 'date', 'likes', 'author']
+        fields = ['title', 'text']
 
 
 class CommentsForm(forms.ModelForm):
     class Meta():
         model = Comments
-        fields = ['comment_text', 'date', 'author']
+        fields = ['comment_text']

@@ -6,7 +6,7 @@ class ArticleComment(admin.TabularInline):
 	extra = 2
 
 class AdminArticle(admin.ModelAdmin):
-	fields = ['title', 'text', 'date']
+	fields = ['title', 'text']
 	inlines = [ArticleComment,]
 
 admin.site.register(Article, AdminArticle)

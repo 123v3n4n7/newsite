@@ -1,23 +1,27 @@
 {% extends "main.html" %}
 {% load static %}
 {% block article%}
+<div class="row large-offset-2">
 	<h1>{{article.title}}</h1>
 	<p>{{article.text}}</p>
     <p>{{username}}</p>
 	<h5>date: {{article.date}}</h5>
 	<hr>
+    <div class="row large-offset-1">
 	<p>Комментарии:</p>
 	{% for comment in comments%}
 		<p>{{comment.comment_text}}</p>
+        {{ comment.date }}
+        {{ comment.author }}
 		<hr>
 	{% endfor %}
-    {% if auth == True %}
+    </div>
+
 	<form action = "/article/addcomment/{{article.id}}" method = "post">
 		{% csrf_token %}
-        {{form.author }}
-		{{form.comment_text}}
+		{{form}}
 		<input type = "submit" class = "button" value = "Добавить">		
 	</form>
-    {% endif %}
+</div>
 	
 {% endblock %}

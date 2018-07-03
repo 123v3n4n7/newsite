@@ -23,4 +23,5 @@ urlpatterns = [
     path('regapp/', include('regapp.urls')),  
     path('auth/', include('loginsys.urls')),
     path('', include('article.urls')),
+    path('search/', include('search.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

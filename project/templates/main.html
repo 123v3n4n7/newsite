@@ -11,6 +11,14 @@
 			{% endif %}
 		</ul>
 	</section>
+    <section class = "top-bar-left">
+        <div class = "menu">
+            <span class="input-group-label">search</span>
+            <div class="input-group-button">
+                <input type="submit" class="button" value="Submit">
+            </div>
+        </div>
+    </section>
 </div>
 <div class = "row">
 	{% block info%}{% endblock %}
@@ -23,4 +31,5 @@
 </div>
 <div>
 	{% block article%}{% endblock %}
+    {% block newarticle %}{% endblock %}
 </div>

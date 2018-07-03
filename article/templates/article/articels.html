@@ -2,13 +2,41 @@
 {% load static %}
 {% block articles %}
 
+<div class="row large-offset-2">
+
+
+    <a href="{% url 'article:addarticle' %}" class="button">Написать пост</a>
+
+
+
 	{% for article in articles %}		
 		<h1><a href = {% url 'article:article' article.id %}>{{article.title}}</a></h1>
 		<p>{{article.text}}</p>
 		<h5>date: {{article.date}}</h5>
         <p>{{article.author}}</p>
 		<p><a href = {% url 'article:addlike' article.id %}><img src ="{% static 'like.jpg' %}" width="25px" height="25px"></a>{{article.likes}}</p>
-		<hr>
+        <hr>
 	{% endfor %}
+    <div class="row">
+        <div class="large-offset-2">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if articles.has_previous %}
+                     <a href="?page=1" >&laquo; first</a>
+                     <a href="?page={{ articles.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                     Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+                </span>
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}">next</a>
+                    <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
